@@ -1,0 +1,72 @@
+.full-page-content {
+    padding:0;
+    margin:0;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: white !important;
+}
+.answer-card {
+    margin:60px 0 10px 20px;
+}
+.answer-actions a{
+    font-size: 15px;
+    padding-right: 15px;
+    font-weight: bold;
+    color: #999;
+}
+.answer-actions a:hover{
+    text-decoration: none;
+    color: #7A0710;
+}
+.new-comment {
+    vertical-align: middle;
+    background-color: #f7f7f7;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    min-height:50px;
+}
+.comment-form {
+   margin-bottom: 10px;
+   font-size: 15px !important;
+   font-weight: bold; 
+   width: 400px;
+   max-height: 35px;
+}
+.comment-form:focus{
+    border-color: rgba(163,7,16, 0.6) !important;
+    box-shadow: 0 4px 8px 0 rgba(163,7,16, 0.2) !important;
+}
+.comment-create-avatar {
+    float: left;
+    margin-left: 20px;
+    margin-top: 13px;
+    padding-right: 20px;
+}
+.comment-create-text{
+    float: left;
+    margin-top: 7px;
+    padding-right: 20px;
+}
+.comment-create-btn{
+    float: left;
+    margin-top: 10px;
+    padding-right: 20px;
+}
+.right-feed {
+    margin-left:70px;
+    margin-top: 160px;
+}
+.related-questions {
+    color: #999;
+}
+.related-questions h2{
+    font-size: 18px;
+}
+.related-links {
+    margin-left: -35px;
+}
+.related-links a:hover{
+    color: #7A0710;
+}

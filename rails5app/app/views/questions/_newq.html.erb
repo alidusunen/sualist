@@ -1,0 +1,28 @@
+<div class="new-question-main">
+    <% if user_signed_in? %>
+    <div class="new-question-user">
+        <span>
+            <% if current_user.image.present? %>
+                <%= image_tag current_user.image, class: "avatar-xs" %> 
+            <% else %>
+                <%= image_tag current_user.avatar.url(:small), class: "avatar-xs" %>
+            <% end %>
+            </span>
+        <span style="padding-left: 10px; color: #999"><%= current_user.name %></span>
+    </div>
+    <% end %>
+    <div class="new-question-form">
+    <%= form_for [@question, Question.new] do |f| %>
+        <%= f.text_area :text, :class => 'form-control question-form', :placeholder => 'Ne sormak istersin?' %>
+        <div class="question-form-footer">
+            <span class="cat-span-text">Kategori Seç:</span>
+            <span><script type="text/javascript">
+                $(document).ready(function() {
+                $(".js-example-basic-single").select2();});
+            </script>
+        <%= collection_select(:question, :category_id, Category.all, :id, :name, {} , {:class => 'js-example-basic-single question-form-category'} ) %></span>
+            <span class="create-btn"><%= f.submit "Soru Sor", :class => 'soru-sor' %></span>
+        </div>
+    <% end %>
+    </div>
+</div>

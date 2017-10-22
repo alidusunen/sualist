@@ -1,0 +1,17 @@
+        <div class="left-nav-float">
+         <div class="left-nav">
+           <h2>Kaynakların</h2><hr/>
+           <p><%= link_to 'Popüler', popular_path %></p>
+           <p><%= link_to 'Yeni Sorular', root_path %></p>
+           <% if user_signed_in? %>
+           <p><%= link_to 'Konuların :', feed_path %></p>
+           <div id="left-nav-cats">
+             <ul>
+                 <% current_user.all_following.each do |cat| %>
+                   <li><%= link_to cat.name, category_path(cat) %></li>
+                 <% end %>
+             </ul>
+           </div>
+           <% end %>
+         </div> 
+        </div>

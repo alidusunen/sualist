@@ -1,0 +1,28 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+
+ */
+@import url("pages/home_design.css");
+@import url("ui/navbar.css");
+@import url("ui/avatar.css");
+@import url("ui/icons.css");
+@import url("ui/new_question.css");
+@import url("ui/login_modal.css");
+@import url("pages/answers_show.css");
+@import url("pages/category_show.css");
+body {
+    background-color: #fafafa;
+    margin:0 auto;
+}

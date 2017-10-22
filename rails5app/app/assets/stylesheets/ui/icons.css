@@ -1,0 +1,21 @@
+.upvote {
+    font-size: 24px !important;
+    color: #999;
+    padding-right: 5px;
+}
+.upvote:hover {
+    color: #7A0710;
+}
+.vote-number {
+    font-size: 17px !important;
+    font-weight: bold;
+    color: #999;
+    padding-right: 20px;
+}
+.share-icons {
+    color: #999;
+    padding-left: 5px;
+}
+.share-icons:hover {
+    color: #7A0710;
+}

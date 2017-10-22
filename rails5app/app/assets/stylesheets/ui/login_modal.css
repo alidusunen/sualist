@@ -1,0 +1,61 @@
+.btn-facebook {
+    background-color: rgba(59,89,152,0.95);
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+}
+.btn-facebook:hover {
+    background-color: #3b5998;
+    color: white;
+}
+.btn-icon {
+    padding-right: 10px;
+}
+.modal-fb-button {
+    margin-bottom: 20px;
+}
+.form-item {
+    margin-bottom: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 250px;
+}
+.form-remember{
+    margin-right:132px;
+    padding-left:12px;
+}
+.modal-form-checkbox {
+    display: inline;
+    float: right;
+    width: 15px;
+    height: 15px;
+}
+.form-submit{
+    background-color: rgba(122, 7, 16, 0.95);
+    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+}
+.form-submit:hover {
+    background-color: #7A0710;
+    color: white;
+}
+.modal-footer-content{
+    text-align: center;
+}
+.modal-footer-content p{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+.modal-header{
+    text-align: center;
+}
+.modal-body{
+    background-color: #fafafa;
+}

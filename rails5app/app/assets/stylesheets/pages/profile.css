@@ -1,0 +1,49 @@
+.profile-main{
+    margin-left: 60px;
+}
+.user-header{
+    min-height: 180px;
+    border-bottom: solid #efefef 3px;
+}
+.user-image{
+    float: left;
+    margin-right: 30px;
+}
+.user-description{
+    color: #262626;
+}
+.user-description h1{
+    margin-top: 20px;
+    font-size: 32px;
+    font-weight: bold;
+}
+.user-description h3{
+    font-size: 18px;
+    color: #999;
+}
+.btn-user{
+    text-align: center;
+    margin-top: 7.5px;
+    color: #999;
+    background-color: #f7f7f7;
+    border-color: #efefef;
+    font-size: 13px;
+}
+.btn-user:hover {
+    color: #999;
+    background-color: #f7f7f7;
+    border-color: #666;
+    transition: border-color 0.5s ease;
+}
+.btn-user a{
+    text-decoration: none;
+    color: #999;
+}
+.user-feed-list{
+    margin-left: -30px;
+    margin-top: 20px;
+}
+.user-feed-list li{
+    margin-bottom: 10px;
+    list-style: none;
+}

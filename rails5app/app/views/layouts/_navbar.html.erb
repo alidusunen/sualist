@@ -1,0 +1,96 @@
+  <nav class="navbar navbar navbar-fixed-top navbar-border" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%= link_to "Sualist", root_path, class: "navbar-brand" %>
+            </div>
+            <!-- Left Navigation Links-->
+            <div class="collapse navbar-collapse" >
+                <ul class="nav navbar-nav navbar-left" id="nav-but" >
+
+                    <li><%= link_to "Ana Sayfa", root_path, class: "navbar-brand" %></li>
+                    <li><%= link_to "Yanıtla", root_path, class: "navbar-brand" %></li>
+                    <li><%= link_to "Bildirimler", root_path, class: "navbar-brand" %></li>
+                    <!-- Search Bar-->
+                    <li><div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="form-control input-lg" placeholder="Sualist'te Ara" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-info btn-lg" type="button">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- /:Search Bar - Collapse-->
+                    
+                </ul>
+                <!-- /Left Navigation Links - Collapse-->
+                <ul class="nav navbar-nav navbar-right" id="nav-but">
+                    <% if user_signed_in? %>
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">
+                            <% if current_user.image.present? %>
+                             <%= image_tag current_user.image, class: "avatar-small" %> 
+                             <% else %>
+                             <%= image_tag current_user.avatar.url(:small), class: "avatar-small" %>
+                             <% end %>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><%= link_to "Profil", profile_user_path(current_user) %></li>
+                            <li><%= link_to "Çıkış Yap", destroy_user_session_path, method: :delete %></li>
+                        </ul>
+                    </li>
+                    <% else %>
+                    <li><%= link_to "Giriş Yap", '#' ,{class: "navbar-brand", 'data-toggle' => "modal", 'data-target' => "#logInModal" } %></li>
+              
+                    <% end %>
+                    <li><%= link_to "Soru Sor", root_path , class: "navbar-brand" %></li>
+                    </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+             <!-- Modal -->
+                        <div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h3 class="modal-title" id="exampleModalLabel">Giriş Yap</h3>
+                              </div>
+                              <div class="modal-body">
+                                    <div class="modal-fb-button">
+                                        <a href="https://sualist-ui-alidusunen.c9users.io/users/auth/facebook/" class="btn btn-facebook" role="button"><span class="fa fa-facebook btn-icon"></span> Facebook ile Bağlan </a>
+                                    </div>
+                                    <div class="modal-user-form">
+                                        <%= form_for(:user, :url => session_path(:user)) do |f| %>
+                                          <%= f.text_field :email , :class => 'form-control form-item' %>
+                                          <%= f.password_field :password ,:class => 'form-control form-item' %>
+                                          <div class="form-remember">
+                                          <span><%= f.label :remember_me, :class => 'modal-form-text'  %></span><span id="remember-checkbox"><%= f.check_box :remember_me , :class => 'form-control modal-form-checkbox' %></span> 
+                                          </div>
+                                          <div><%= f.submit 'Giriş', :class => 'btn form-submit' %></div>
+                                          <% end %>
+                                    </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <div class="modal-footer-content">
+                                    <p><%= link_to "Şifremi Unuttum", new_password_path(:user) %></p>
+                                    <p>Hesabınız yok mu? <%= link_to "Üye Ol", new_user_registration_path %></p>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /Modal Collapse-->

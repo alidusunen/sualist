@@ -1,0 +1,7 @@
+<h1>New Question</h1>
+
+<%= form_for(@question)do |f| %>
+    <%= f.text_area :text  %>
+    <%= collection_select(:question, :category_id, Category.all, :id, :name) %>
+    <%= f.submit "Create" %>
+<% end %>

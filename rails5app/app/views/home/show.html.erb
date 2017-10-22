@@ -1,0 +1,95 @@
+<div class="container full-page">
+  <div class="row">
+      <!-----Category Feed --->
+      <div class="col-sm-3 right-column">
+      <%= render "home/category_feed" %>
+      </div>
+      <!-----Question Feed --->
+      <div class="col-sm-7 left-column">
+          <div class="new-question">
+            <%= render "questions/newq" %>
+          </div>
+          <div class="questions">
+              <% @questions.order(:cached_votes_score).reverse_each do |q| %>
+               <!--Questions w/out answers -->
+              <% if q.answers.size == 0 %>
+              <div class="question-card">
+                <div class= "question-card-category">
+                  <ul>
+                    <li><p> Soru </p></li>
+                    <li><p>-</p></li>
+                    <li><p><%= q.category.name %></p></li>
+                  </ul>
+                </div>
+                <div class="question-card-title">
+                  <h1><%= link_to q.text, question_path(q) %></h1>
+                </div>
+                <div class="question-footer">
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-up upvote" aria-hidden="true"></i>'.html_safe, upvote_question_path(q) , method: :put%></span><span class="vote-number"><%= q.get_upvotes.size %></span>
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-down upvote" aria-hidden="true"></i>'.html_safe, downvote_question_path(q) , method: :put %></span><span class="vote-number"><%= q.get_downvotes.size %></span>
+                 <div class="question-footer-share">
+                    <span class="share-icons"><%= link_to '<i class="fa fa-facebook-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-twitter-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-share-square-o share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                  </div>
+                </div>
+              </div>  
+              <!--/Questions w/out answers -->
+              <% else %>
+              <div class="question-card">
+                <div class= "question-card-category">
+                  <ul>
+                    <li><p> Cevap </p></li>
+                    <li><p>-</p></li>
+                    <li><p><%= q.category.name %></p></li>
+                  </ul>
+                </div>
+                <div class="question-card-title">
+                  <h1><%= link_to q.text, question_path(q) %></h1>
+                </div>
+                <div class="question-card-user">
+                  <% q.answers.order(cached_votes_score: :desc).first(1).each do |a|%>
+                  <div class="question-user-image">
+                    <% if a.user.image.present? %>
+                      <%= image_tag a.user.image, class: "avatar-medium" %> 
+                    <% else %>
+                      <%= image_tag a.user.avatar.url(:medium), class: "avatar-medium" %>
+                  <% end %>
+                  </div>
+                  <div class="questions-user-info">
+                    <ul>
+                      <li><h3><%= a.user.name %></h3></li>
+                      <li><p><%= time_ago_in_words(a.created_at) %> önce</p></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="question-answer">
+                  <p><%= a.text %></p>
+                </div>
+                
+                <div class="question-footer">
+
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-up upvote" aria-hidden="true"></i>'.html_safe, upvote_answer_path(a) , method: :put%></span><span class="vote-number"><%= q.get_upvotes.size %></span>
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-down upvote" aria-hidden="true"></i>'.html_safe, downvote_answer_path(a) , method: :put %></span><span class="vote-number"><%= q.get_downvotes.size %></span>
+                 
+                  <div class="question-footer-share">
+                    <span class="share-icons"><%= link_to '<i class="fa fa-facebook-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-twitter-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-share-square-o share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                  </div>
+                </div>
+                <% end %>
+                </div>
+                <% end %>
+                <% end %>
+          </div>
+          </div>
+          <!-----/Question Feed --->
+          </div>
+          </div>
+
+
+
+
+
+

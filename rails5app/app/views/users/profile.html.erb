@@ -1,0 +1,53 @@
+<div class="full-page-content">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8 left-column profile-main">
+            <div class="user-header">
+                <span class="user-image">
+                    <% if @user.image.present? %>
+                        <%= image_tag @user.image, class: "avatar-large" %> 
+                    <% else %>
+                        <%= image_tag @user.avatar.url(:large), class: "avatar-large" %>
+                    <% end %>
+                </span>
+                <span class="user-description">
+                    <h1><%= @user.name %></h1>
+                    <h3>Bir yetkinlik konusu ekle</h3>
+                    <span class="btn btn-user">
+                        <% if user_signed_in? %>
+                          <% if current_user.following?(@user) %>
+                            <%= link_to 'Takiptesin', '#', method: :delete %>
+                          <%else%>
+                            <%= link_to 'Takip Et', '#', method: :post %>
+                          <%end%>
+                        <%end%>
+                </span>
+            </div>
+            <div class="user-feed">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="user-feed-list">
+                                <ul>
+                                    <li>Yanıtlar <%= @user.answers.count %></li>
+                                    <li>Sorular <%= @user.questions.count %></li>
+                                    <li>Konular <%= @user.all_following.count %></li>
+                                    <li>Takipçiler <%= @user.answers.count %></li>
+                                    <li>Takip Ettikleri <%= @user.answers.count %></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="col-sm-3">
+                
+        </div>
+    </div>
+</div>
+</div>

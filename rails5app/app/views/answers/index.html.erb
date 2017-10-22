@@ -1,0 +1,17 @@
+
+<h1><%= @question.text %></h1>
+<p> <%= @question.user.name %> <%= @question.user.last_name %></p>
+<%= render "answers/newanswer" %>
+
+<% @answers.order(:cached_votes_score).all.reverse_each do |a| %>
+    <h3><%= a.text %> </h3>
+    <p> <%= a.user.name %> </p>
+    <% if a.user == current_user %>
+        <%= link_to 'Edit', edit_question_answer_path(@question, a) %>
+        <%= link_to 'Delete', question_answer_path(@question, a) , :method => :delete %>
+    <% end %>
+    <p><%= link_to 'Upvote', upvote_question_answer_path(@question, a) , method: :put%> <%= a.get_upvotes.size %> </p>
+    <p><%= link_to 'Downvote', downvote_question_answer_path(@question, a) , method: :put %> <%=a.get_downvotes.size %> </p>
+    <%= render "comments/index" %>
+    <%= render "comments/newcomment" %>
+<% end %>

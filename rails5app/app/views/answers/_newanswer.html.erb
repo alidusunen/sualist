@@ -1,0 +1,18 @@
+<div class="new-question-main">
+    <% if user_signed_in? %>
+    <div class="new-question-user">
+        <span><%= image_tag current_user.image, class: "avatar-xs" %></span><span style="padding-left: 10px; color: #999"><%= current_user.name %></span>
+    </div>
+    <% end %>
+    <div class="new-question-form">
+    <%= form_for [@question, Answer.new] do |f| %>
+        <%= f.text_area :text, :class => 'form-control question-form', :placeholder => 'Bu soruya bir cevap yaz' %>
+        <div class="question-form-footer">
+            <span class="create-btn"><%= f.submit "Yanıtla", :class => 'soru-sor' %></span>
+        </div>
+    <% end %>
+    </div>
+</div>
+
+
+

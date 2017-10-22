@@ -1,0 +1,113 @@
+.left-column {
+    margin-top: 80px;
+}
+.right-column {
+    margin-top: 65px;
+}
+.full-page {
+    background-color: #fafafa;
+    width: 1080px !important;
+}
+.new-question {
+    background-color: white;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #efefef;
+    border-width: 1px;
+    box-shadow: 1px 1px 0px #f7f7f7;
+}
+.question-card {
+    background-color: white;
+    margin-top: 10px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #efefef;
+    border-width: 1px;
+    box-shadow: 1px 1px 0px #f7f7f7;
+}
+.question-card-category {
+    margin-left: -17px;
+}
+
+.question-card-category ul{
+    list-style: none;
+}
+.question-card-category li{
+    display: inline;
+    float: left;
+    padding-right: 5px;
+    color: #999999;
+}
+.question-card-title {
+    padding: 10px 0 0 20px;
+}
+.question-card-title h1{
+    font-size: 22px;
+}
+.question-card-title a{
+    color: #262626;
+    font-weight: bold;
+}
+.question-card-title a:hover{
+    color: #262626;
+}
+.question-user-image .avatar-medium {
+    margin-left: 20px;
+}
+.question-user-image {
+    float: left;
+}
+.questions-user-info {
+    padding: 0 0 0 40px;
+}
+.questions-user-info ul{
+    list-style: none;
+}
+.questions-user-info h3{
+    margin: 2px 0 0 3px;
+    padding-top: 2px;
+    font-size: 17px;
+}
+.questions-user-info p{
+    margin: 2px 0 0 3px;
+    font-size: 13px;
+}
+.question-answer {
+    margin: 0 0 0 20px;
+    padding-top: 10px;
+}
+.question-footer {
+    margin: 0 0 10px 20px;
+}
+.question-footer-share {
+    float: right;
+    font-size: 17px;
+    margin: 10px 20px 0 0;
+}
+.left-nav{
+    position: fixed;
+    color: #999;
+}
+.left-nav a{
+    color: #999;
+    text-decoration: none;
+}
+.left-nav a:hover{
+    color: #7A0710;
+    text-decoration: none;
+}
+.left-nav-float{
+    float:right;
+    margin-right: 175px;
+}
+.left-nav ul {
+    list-style: none;
+}
+.left-nav li {
+    text-decoration: none;
+    padding-bottom: 7px;
+    
+}
+.left-nav h2 {
+    font-size: 18px;
+}

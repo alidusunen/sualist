@@ -1,0 +1,79 @@
+<div class="full-page-content">
+  <!----category header ---->
+  <div class="category-header">
+    <div class="category-info flux">
+      <div class="cat-content">
+        <span class="cat-image"><%= image_tag @category.image.url(:small) %></span>
+        <div class="cat-text">
+          <h1><%= @category.name %></h1>
+          <p><%= @category.description %></p>
+        </div>
+      </div>
+    </div>
+    <!----Header Foooter Start---->
+    <div class="category-footer flux">
+      <div class="footer-list">
+        <ul>
+          <li><%= link_to 'Oku', category_path(@category), { :class => "footer-btn" } %> </li>
+          <li><%= link_to 'Yanıtla', answer_category_path(@category), { :class => "footer-btn" } %> </li>
+          <li><%= link_to 'Popüler', top_category_path(@category), { :class => "footer-btn" } %> </li>
+              <span class="btn btn-follow">
+                <% if user_signed_in? %>
+                  <% if current_user.following?(@category) %>
+                    <%= link_to 'Takiptesin', unfollow_category_path, method: :delete %>
+                   <%else%>
+                    <%= link_to 'Takip Et', follow_category_path, method: :post %>
+                  <%end%>
+                  <span class="btn-follow-info"></%><%= @category.followers_count%> Kullanıcı</span>
+                <%end%>
+            </span> 
+        </ul>
+      </div>
+    </div>
+    <!-----Header Footer Collapse---->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-7">
+          
+          
+          <div class="questions">
+              <% @questions.order(:cached_votes_score).reverse_each do |q| %>
+              
+              <!--Questions w/out answers -->
+              <% if q.answers.size == 0 %>
+              <div class="category-question-card">
+                <div class= "question-card-category">
+                  <ul>
+                    <li><p> Soru </p></li>
+                    <li><p>-</p></li>
+                    <li><p><%= q.category.name %></p></li>
+                  </ul>
+                </div>
+                <div class="question-card-title">
+                  <h1><%= link_to q.text, question_path(q) %></h1>
+                </div>
+                <div class="question-footer">
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-up upvote" aria-hidden="true"></i>'.html_safe, upvote_question_path(q) , method: :put%></span><span class="vote-number"><%= q.get_upvotes.size %></span>
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-down upvote" aria-hidden="true"></i>'.html_safe, downvote_question_path(q) , method: :put %></span><span class="vote-number"><%= q.get_downvotes.size %></span>
+                 <div class="question-footer-share">
+                    <span class="share-icons"><%= link_to '<i class="fa fa-facebook-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-twitter-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-share-square-o share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                  </div>
+                </div>
+              </div>  
+              <!--/Questions w/out answers -->
+              
+                <% end %>
+                <% end %>
+                
+          </div>
+        </div>
+        
+        <div class="col-sm-3 right-feed">
+        </div>
+          
+          
+  </div>
+  
+</div>

@@ -1,0 +1,97 @@
+<div class="full-page-content">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7 left-column"> 
+        <div class="question-content">
+        <h1><%= @question.text %></h1>
+        </div>
+        <div class="new-answer">
+        <%= render "answers/newanswer" %>
+        </div>
+        <!---answers--->
+        <div class="answer-card">
+            <% @answers.order(:cached_votes_score).all.reverse_each do |a| %>
+            <hr/>
+            <div class="question-card-user">
+                <div class="question-user-image">
+                    <% if a.user.image.present? %>
+                      <%= image_tag a.user.image, class: "avatar-medium" %> 
+                    <% else %>
+                      <%= image_tag a.user.avatar.url(:small), class: "avatar-medium" %>
+                  <% end %>
+                </div>
+                <div class="questions-user-info">
+                    <ul>
+                      <li><h3><%= a.user.name %></h3></li>
+                      <li><p><%= time_ago_in_words(a.created_at) %> önce</p></li>
+                    </ul>
+                 </div>
+            </div>
+            <div class="question-answer">
+                  <p><%= a.text %></p>
+            </div>
+            <div class="question-footer">
+
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-up upvote" aria-hidden="true"></i>'.html_safe, upvote_answer_path(a) , method: :put%></span><span class="vote-number"><%= a.get_upvotes.size %></span>
+                    <span class="upvote"><%= link_to '<i class="fa fa-thumbs-o-down upvote" aria-hidden="true"></i>'.html_safe, downvote_answer_path(a) , method: :put %></span><span class="vote-number"><%= a.get_downvotes.size %></span>
+                    <% if a.user == current_user %>
+                        <span class="answer-actions"><%= link_to 'Edit', edit_question_answer_path(@question, a) %></span>
+                        <span class="answer-actions"><%= link_to 'Delete', question_answer_path(@question, a) , :method => :delete %></span>
+                    <% end %>
+                  <div class="question-footer-share">
+                    <span class="share-icons"><%= link_to '<i class="fa fa-facebook-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-twitter-square share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                    <span class="share-icons"><%= link_to '<i class="fa fa-share-square-o share-icons" aria-hidden="true"></i>'.html_safe, '#' %></span>
+                  </div>
+            </div>
+            <!----/answers collapse --->
+                <!---comments--->
+                <div class="answer-comment">
+                    <% if user_signed_in? %>
+                    <div class="new-comment">
+                        <%= form_for [a, Comment.new] do |f| %>
+                            <span class="comment-create-avatar">
+                                <% if current_user.image.present? %>
+                                    <%= image_tag current_user.image, class: "avatar-small" %> 
+                                    <% else %>
+                                    <%= image_tag current_user.avatar.url(:small), class: "avatar-small" %>
+                                <% end %>
+                            </span>
+                            <span class="comment-create-text"><%= f.text_area :text, :class => 'form-control comment-form', :placeholder => 'Bu yanıta bir yorum yap'  %></span> <span class="comment-create-btn"><%= f.submit "Yorum Yap", :class => 'soru-sor' %></span>
+                        <% end %>
+                    </div>
+                    <% end %>
+                    <!---
+                    <div class="list-comments">
+                        <div class="comment">
+                        <% a.comments.order(:cached_votes_score).all.reverse_each do |c| %>
+                            <%= c.text %>
+                        <p><%= link_to 'Upvote', upvote_comment_path(c) , method: :put%> <%= c.get_upvotes.size %> </p>
+                        <p><%= link_to 'Downvote', downvote_comment_path(c) , method: :put %> <%=c.get_downvotes.size %> </p>
+                        <% end %> 
+                        </div>
+                    </div>
+                    ---- comments section, javascript will be added--->
+                    <!----/comments collapse --->
+                </div>
+                <% end %> 
+        </div>
+    </div>
+    <div class="col-sm-3 right-feed">
+        <div class="related-questions">
+            <h2>Benzer Sorular</h2><hr/> 
+            <div class="related-links">
+                <ul>
+                    <% @question.category.questions.each do |r| %>
+                        <%if @question == r %>
+                        <%else%>
+                        <p><%= link_to r.text, question_path(r) %></p>
+                        <% end %>
+                    <%end%>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
